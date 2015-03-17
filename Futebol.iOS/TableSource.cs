@@ -26,7 +26,7 @@ namespace Futebol.iOS
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Default, cellIdentifier);
 
-			cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			cell.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
 			cell.TextLabel.Text = tableItems[indexPath.Row].Name;
 
 			var imageName = tableItems [indexPath.Row].Shield.Name;
@@ -51,6 +51,12 @@ namespace Futebol.iOS
 		public override nint RowsInSection (UITableView tableview, nint section)
 		{
 			return tableItems.Count;
+		}
+
+		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
+		{
+				new UIAlertView("DetailDisclosureButton Touched" 
+					, tableItems[indexPath.Row].Name, null, "OK", null).Show();
 		}
 
 		#endregion
